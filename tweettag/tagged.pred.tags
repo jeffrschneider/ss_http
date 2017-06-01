@@ -1,0 +1,27 @@
+1	The	the	DT	O	0			
+2	interns	intern	NNS	O-PERSON	0		PERSON	
+3	are	be	VBP	O-`a	0		`a	
+4	sitting	sit	VBG	O-stative	0		stative	
+5	outside	outside	RB	O	0			
+6	.	.	.	O	0			
+
+1	I	i	PRP	O	0			
+2	am	be	VBP	O-`a	0		`a	
+3	wearing	wear	VBG	O-body	0		body	
+4	a	a	DT	O	0			
+5	gray	gray	NN	B-ARTIFACT	0		ARTIFACT	
+6	fleece	fleece	NN	Ī	5	_		
+7	.	.	.	O	0			
+
+1	Mr.	mr.	NNP	B-PERSON	0		PERSON	
+2	Schneider	schneider	NNP	Ī	1	_		
+3	is	be	VBZ	O-`a	0		`a	
+4	sweeping	sweep	VBG	O-social	0		social	
+5	the	the	DT	O	0			
+6	patio	patio	NN	O-ARTIFACT	0		ARTIFACT	
+7	because	because	IN	O	0			
+8	it	it	PRP	O	0			
+9	is	be	VBZ	O-stative	0		stative	
+10	dusty	dusty	JJ	O	0			
+11	.	.	.	O	0			
+

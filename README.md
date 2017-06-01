@@ -9,3 +9,7 @@ tokenized, supersense-tagged sentences are found in tweettag/tokenAndSenses
 full output of amalgam exists in tweettag/tagged.pred.sst and .tags
 
 
+TweetNLP tokenizer and POS tagger
+and pysupersensetagger
+by Nathan Scheider
+

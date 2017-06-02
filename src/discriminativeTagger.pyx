@@ -424,13 +424,11 @@ class DiscriminativeTagger(object):
         
         ##########################
         # for each instance
-        
         instance = (yield o1FeatWeights) # pass back o1FeatWeights and receive first instance from send()
         
         while True:
             
             sent,o0Feats = instance
-            
             nTokens = len(sent)
             
             
@@ -671,7 +669,7 @@ class DiscriminativeTagger(object):
         '''
         
         # setup
-
+        global noWords
         # tabulate accuracy at every 500 iterations
         nWordsProcessed = 0
         nWordsIncorrect = 0
@@ -683,19 +681,20 @@ class DiscriminativeTagger(object):
         startTime = time.time()
         reportAcc = True
         
-        decoder = self._viterbi(nLabels, currentWeights, 
+        decoder = self._viterbi(nLabels, currentWeights,
                               includeLossTerm=includeLossTerm, costAugVal=costAugVal, 
                               useBIO=useBIO)
-        
         o1FeatWeights = decoder.next()
-        
         try:
             instance = (yield o1FeatWeights)    # send back o1FeatWeights and receive the first instance
             
             while True:
                 if instance is None: # signal to print accuracy and reset firstInPass = True
                     if reportAcc:
-                        print('word accuracy over {} words in {} instances: {:.2%}'.format(totalWordsProcessed, totalInstancesProcessed, (totalWordsProcessed-totalWordsIncorrect)/totalWordsProcessed), file=sys.stderr)
+                        if totalWordsProcessed > 0:
+                            print('word accuracy over {} words in {} instances: {:.2%}'.format(totalWordsProcessed, totalInstancesProcessed, (totalWordsProcessed-totalWordsIncorrect)/totalWordsProcessed), file=sys.stderr)
+                        else:
+                            noWords = True
                     newStartTime = time.time()
                     print('decoding time:',newStartTime-startTime, file=sys.stderr)
                     firstInPass = True
@@ -703,10 +702,8 @@ class DiscriminativeTagger(object):
                     
                     instance = (yield)
                     continue
-                
                 sent,o0Feats = instance
                 sent,derivation = decoder.send((sent,o0Feats))    # Viterbi decode this instance
-                
                 if reportAcc:
                     for i in range(len(sent)):
                         if sent[i].gold is None:
@@ -727,7 +724,10 @@ class DiscriminativeTagger(object):
                 if totalInstancesProcessed%100==0:
                     print('totalInstancesProcessed = ',totalInstancesProcessed, file=sys.stderr)
                     if reportAcc:
-                        print('word accuracy in last 100 instances: {:.2%}'.format((nWordsProcessed-nWordsIncorrect)/nWordsProcessed), file=sys.stderr)
+                        if totalWordsProcessed > 0:
+                            print('word accuracy in last 100 instances: {:.2%}'.format((nWordsProcessed-nWordsIncorrect)/nWordsProcessed), file=sys.stderr)
+                        else:
+                            noWords = True
                     nWordsIncorrect = nWordsProcessed = 0
                 elif totalInstancesProcessed%10==0:
                     print('.', file=sys.stderr, end='')
@@ -759,9 +759,9 @@ class DiscriminativeTagger(object):
             sent,derivation = decoder.send((sent,o0Feats))
             if print_predictions:
                 # print predictions
-                print(sent)
-                print()
-                
+                print(str(sent), file = sys.stdout) #Bryan sent contains supersense tag file
+                print("$NEXT", file = sys.stdout)
+
         decoder.next()  # show summary statistics
         decoder.close() # a formality
 
@@ -967,7 +967,6 @@ def analyze(tokens, poses):
     for tkn,p in zip(tokens,poses):
         stemS = unicode(morph.stem(tkn,p))
         sentence.addToken(token=unicode(tkn), stem=stemS, pos=unicode(p), goldTag=None)
-    
     predict(_args, _tagger_model, sentence=sentence, print_predictions=False)
     
     '''
@@ -1007,32 +1006,37 @@ def predict(args, t, featurized_dataset=None, sentence=None, print_predictions=T
     if args.predict is not None or sentence:
         # predict on a separate dataset
         
-        if args.predict is not None:
-            dataSet = SupersenseDataSet(args.predict, 
-                                        t._labels, legacy0=args.legacy0, 
-                                        keep_in_memory=False,
-                                        autoreset=False)
-        else:
-            dataSet = [sentence]
+        while noWords == False:
+            if args.predict is not None: #Note to Bryan
+            
+                dataSet = SupersenseDataSet(args.predict,
+                                            t._labels, legacy0=args.legacy0,
+                                            keep_in_memory=False,
+                                            autoreset=False)
+            else:
+                dataSet = [sentence]
         
-        predData = SupersenseFeaturizer(featureExtractor, dataSet,   # could be stdin, which should never be reset 
+            predData = SupersenseFeaturizer(featureExtractor, dataSet,   # could be stdin, which should never be reset
                                         t._featureIndexes, cache_features=False, domain_prefixes=args.domains)
 
-        t.decode_dataset(predData, print_predictions=print_predictions, useBIO=args.bio, includeLossTerm=False, costAugVal=0.0)
-        
-        
+            t.decode_dataset(predData, print_predictions=print_predictions, useBIO=args.bio, includeLossTerm=False, costAugVal=0.0)
+            print("done decoding", file=sys.stderr)#Bryan
+        #end while
 
     
     elif args.test is None and args.weights:
         t.printWeights(sys.stdout)
+
     else:
         t.tagStandardInput()
 
 def main():
+    global noWords
     '''
     Parse the given command line arguments, then act accordingly.
     '''
     args = opts()
+    noWords = False
     evalData = setup(args)
     predict(args, _tagger_model, featurized_dataset=evalData)
 

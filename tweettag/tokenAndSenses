@@ -1,27 +1,5 @@
-The	O
-interns	O-PERSON
-are	O-`a
-sitting	O-stative
-outside	O
+Bob	O-PERSON
+ate	O-consumption
+pizza	O-FOOD
 .	O
-
-I	O
-am	O-`a
-wearing	O-body
-a	O
-gray	B-ARTIFACT
-fleece	Ī
-.	O
-
-Mr.	B-PERSON
-Schneider	Ī
-is	O-`a
-sweeping	O-social
-the	O
-patio	O-ARTIFACT
-because	O
-it	O
-is	O-stative
-dusty	O
-.	O
-
+$NEXT

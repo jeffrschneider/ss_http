@@ -40,7 +40,10 @@ class SupersenseDataSet(DataSet):
         self._f.close()
     
     def open_file(self):
-        self._f = open(self._path)  # using codecs.open() was screwing up line buffering
+        if str(self._path)=="tweettag/tagged": #Bryan magic number so I don't have to add a flag.
+            self._f = sys.stdin
+        else:
+            self._f = open(self._path)  # using codecs.open() was screwing up line buffering
     
     def reset(self):
         '''Stop reading more input instances, and prepare to start at the beginning.'''

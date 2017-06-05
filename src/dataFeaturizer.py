@@ -10,6 +10,8 @@ import os, sys, codecs
 from labeledSentence import LabeledSentence
 import morph
 
+import nltk, StringIO #Bryan
+
 USTRINGS = {}
 def uintern(unicode_string):
     '''Simulate built-in intern(), but in a way that works for unicode strings.'''
@@ -40,8 +42,15 @@ class SupersenseDataSet(DataSet):
         self._f.close()
     
     def open_file(self):
-        if str(self._path)=="tweettag/tagged": #Bryan magic number so I don't have to add a flag.
-            self._f = sys.stdin
+        if str(self._path)=='dummy': #Bryan magic number so I don't have to add a command-line flag.
+            
+            text = sys.stdin.read(); #fetch sentence(s) from user
+            tokens = nltk.pos_tag(nltk.word_tokenize(text)) #tokenize then tag sentence(s)
+            formatted = ""
+            for pair in tokens:
+                formatted += pair[0] + '\t' + pair[1] + '\n'  #format for supersense tagging
+            self._f = StringIO.StringIO(formatted) #StringIO serves as pseudo-file with same capabilities
+
         else:
             self._f = open(self._path)  # using codecs.open() was screwing up line buffering
     

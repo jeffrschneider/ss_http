@@ -1,5 +1,0 @@
-1	Bob	bob	NNP	O-PERSON	0		PERSON	
-2	ate	eat	VBD	O-consumption	0		consumption	
-3	pizza	pizza	NN	O-FOOD	0		FOOD	
-4	.	.	.	O	0			
-$NEXT

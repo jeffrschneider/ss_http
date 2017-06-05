@@ -1,15 +1,16 @@
-edit tweettag/sentences.txt for input.
-
 run ./supersense.sh
 
-tokenized, POS tagged sentences are outputted to tweettag/tagged
+after "loading model... done."
 
-tokenized, supersense-tagged sentences are found in tweettag/tokenAndSenses
+Input sentence. Press CTRL-D twice.
 
-full output of amalgam exists in tweettag/tagged.pred.sst and .tags
+JSON object with token-supersense pairs is outputted.
 
+Repeat as desired.
 
-TweetNLP tokenizer and POS tagger
-and pysupersensetagger
+CTRL-D on an empty line exits program.
+
+modifies
+pysupersensetagger
 by Nathan Scheider
 

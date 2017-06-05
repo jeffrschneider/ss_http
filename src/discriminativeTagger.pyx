@@ -21,6 +21,7 @@ from pyutil.ds import features
 import supersenseFeatureExtractor
 featureExtractor = None
 
+import nltk, StringIO #Bryan
 
 from dataFeaturizer import SupersenseDataSet, SupersenseTrainSet, SupersenseFeaturizer
 
@@ -718,7 +719,7 @@ class DiscriminativeTagger(object):
                 #print(',', end='', file=sys.stderr) # DEBUG
                 
                 if firstInPass: # print the tagging of the first sentence in the dataset
-                    print(' '.join(tkn.prediction for tkn in sent).encode('utf-8'), file=sys.stderr)
+                    print(' '.join(tkn.prediction for tkn in sent).encode('utf-8'), file=sys.stderr) #Bryan this is where tags alone are outputted to stderr
                     firstInPass = False
                 
                 if totalInstancesProcessed%100==0:
@@ -761,6 +762,7 @@ class DiscriminativeTagger(object):
                 # print predictions
                 print(str(sent), file = sys.stdout) #Bryan sent contains supersense tag file
                 print("$NEXT", file = sys.stdout)
+                sys.stdout.flush()
 
         decoder.next()  # show summary statistics
         decoder.close() # a formality
@@ -1003,11 +1005,25 @@ def predict(args, t, featurized_dataset=None, sentence=None, print_predictions=T
         t.decode_dataset(featurized_dataset, print_predictions=(args.test_predict is not None and print_predictions), 
                          useBIO=args.bio, includeLossTerm=False, costAugVal=0.0)
         
-    if args.predict is not None or sentence:
-        # predict on a separate dataset
+    if args.predict == 'dummy':
+        #Bryan: get sentence from stdin, tokenize and tag it, send it into dataset.
         
         while noWords == False:
-            if args.predict is not None: #Note to Bryan
+                
+            dataSet = SupersenseDataSet(args.predict, #sending 'dummy' causes read in from stdin. SupersenseDataSet in dataFeaturizer.py has the action.
+                                            t._labels, legacy0=args.legacy0,
+                                            keep_in_memory=False,
+                                            autoreset=False)
+                                            
+            predData = SupersenseFeaturizer(featureExtractor, dataSet,   # could be stdin, which should never be reset
+                                            t._featureIndexes, cache_features=False, domain_prefixes=args.domains)
+
+            t.decode_dataset(predData, print_predictions=print_predictions, useBIO=args.bio, includeLossTerm=False, costAugVal=0.0)
+        #end while
+    
+    elif args.predict is not None or sentence:
+        # predict on a separate dataset
+            if args.predict is not None:
             
                 dataSet = SupersenseDataSet(args.predict,
                                             t._labels, legacy0=args.legacy0,
@@ -1020,9 +1036,6 @@ def predict(args, t, featurized_dataset=None, sentence=None, print_predictions=T
                                         t._featureIndexes, cache_features=False, domain_prefixes=args.domains)
 
             t.decode_dataset(predData, print_predictions=print_predictions, useBIO=args.bio, includeLossTerm=False, costAugVal=0.0)
-            print("done decoding", file=sys.stderr)#Bryan
-        #end while
-
     
     elif args.test is None and args.weights:
         t.printWeights(sys.stdout)

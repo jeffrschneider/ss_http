@@ -5,8 +5,5 @@
 
 #set -eu
 
-cd tweettag && ./runTagger.sh --model ewtb_pos.model sentences.txt | python reformatTokens.py > tagged
+./predict_sst.sh dummy | unbuffer -p cut -f 2,5 | python3 convertToJSON.py
 
-cd .. && ./sst.sh tweettag/tagged > tweettag/tagged.pred.tags
-
-cd tweettag && cut -f 2,5  tagged.pred.tags > tokenAndSenses

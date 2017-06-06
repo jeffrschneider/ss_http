@@ -43,8 +43,9 @@ class SupersenseDataSet(DataSet):
     
     def open_file(self):
         if str(self._path)=='dummy': #Bryan magic number so I don't have to add a command-line flag.
-            
-            text = sys.stdin.read(); #fetch sentence(s) from user
+            print("about to read line", file=sys.stderr)
+            text = sys.stdin.readline().strip(); #fetch sentence(s) from user
+            print(text, file=sys.stderr)
             tokens = nltk.pos_tag(nltk.word_tokenize(text)) #tokenize then tag sentence(s)
             formatted = ""
             for pair in tokens:

@@ -2439,7 +2439,6 @@ static const char __pyx_k_args_2[] = "args";
 static const char __pyx_k_codecs[] = "codecs";
 static const char __pyx_k_cutoff[] = "cutoff";
 static const char __pyx_k_decode[] = "decode";
-static const char __pyx_k_done_2[] = "done.";
 static const char __pyx_k_encode[] = "encode";
 static const char __pyx_k_extend[] = "extend";
 static const char __pyx_k_format[] = "format";
@@ -2678,6 +2677,7 @@ static const char __pyx_k_predDerivation[] = "predDerivation";
 static const char __pyx_k_test_predict_2[] = "test_predict";
 static const char __pyx_k_write_features[] = "write_features";
 static const char __pyx_k_LabeledSentence[] = "LabeledSentence";
+static const char __pyx_k_Ready_for_input[] = "Ready for input.";
 static const char __pyx_k_allocate_buffer[] = "allocate_buffer";
 static const char __pyx_k_average_weights[] = "average_weights";
 static const char __pyx_k_avgWeightDeltas[] = "avgWeightDeltas";
@@ -2936,6 +2936,7 @@ static PyObject *__pyx_kp_s_Path_to_test_data_for_a_CoNLL_st;
 static PyObject *__pyx_kp_s_Path_to_test_data_for_a_CoNLL_st_2;
 static PyObject *__pyx_kp_s_Path_to_training_data_file;
 static PyObject *__pyx_kp_s_Prefixes_to_be_matched_against_t;
+static PyObject *__pyx_kp_s_Ready_for_input;
 static PyObject *__pyx_kp_s_Save_path_for_serialized_model_f;
 static PyObject *__pyx_n_s_SequentialStringIndexer;
 static PyObject *__pyx_n_s_StringIO;
@@ -3042,7 +3043,6 @@ static PyObject *__pyx_n_s_doc;
 static PyObject *__pyx_n_s_domain_prefixes;
 static PyObject *__pyx_n_s_domains;
 static PyObject *__pyx_n_s_done;
-static PyObject *__pyx_kp_s_done_2;
 static PyObject *__pyx_kp_s_done_with;
 static PyObject *__pyx_n_s_dotProduct;
 static PyObject *__pyx_n_s_dpBackPointers;
@@ -22875,7 +22875,7 @@ static PyObject *__pyx_pf_20discriminativeTagger_6setup(CYTHON_UNUSED PyObject *
     /* "discriminativeTagger.pyx":909
  *         # override options used during training that may be different for prediction
  *         #t.setBinaryFeats(False)
- *         print('done.', file=sys.stderr)             # <<<<<<<<<<<<<<
+ *         print('Ready for input.', file=sys.stderr)             # <<<<<<<<<<<<<<
  *     else:
  *         t = DiscriminativeTagger(cutoff=args.cutoff, defaultY=args.defaultY)
  */
@@ -22904,7 +22904,7 @@ static PyObject *__pyx_pf_20discriminativeTagger_6setup(CYTHON_UNUSED PyObject *
   }
 
   /* "discriminativeTagger.pyx":911
- *         print('done.', file=sys.stderr)
+ *         print('Ready for input.', file=sys.stderr)
  *     else:
  *         t = DiscriminativeTagger(cutoff=args.cutoff, defaultY=args.defaultY)             # <<<<<<<<<<<<<<
  *         #t.setBinaryFeats(False)
@@ -41083,6 +41083,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_Path_to_test_data_for_a_CoNLL_st_2, __pyx_k_Path_to_test_data_for_a_CoNLL_st_2, sizeof(__pyx_k_Path_to_test_data_for_a_CoNLL_st_2), 0, 0, 1, 0},
   {&__pyx_kp_s_Path_to_training_data_file, __pyx_k_Path_to_training_data_file, sizeof(__pyx_k_Path_to_training_data_file), 0, 0, 1, 0},
   {&__pyx_kp_s_Prefixes_to_be_matched_against_t, __pyx_k_Prefixes_to_be_matched_against_t, sizeof(__pyx_k_Prefixes_to_be_matched_against_t), 0, 0, 1, 0},
+  {&__pyx_kp_s_Ready_for_input, __pyx_k_Ready_for_input, sizeof(__pyx_k_Ready_for_input), 0, 0, 1, 0},
   {&__pyx_kp_s_Save_path_for_serialized_model_f, __pyx_k_Save_path_for_serialized_model_f, sizeof(__pyx_k_Save_path_for_serialized_model_f), 0, 0, 1, 0},
   {&__pyx_n_s_SequentialStringIndexer, __pyx_k_SequentialStringIndexer, sizeof(__pyx_k_SequentialStringIndexer), 0, 0, 1, 1},
   {&__pyx_n_s_StringIO, __pyx_k_StringIO, sizeof(__pyx_k_StringIO), 0, 0, 1, 1},
@@ -41189,7 +41190,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_domain_prefixes, __pyx_k_domain_prefixes, sizeof(__pyx_k_domain_prefixes), 0, 0, 1, 1},
   {&__pyx_n_s_domains, __pyx_k_domains, sizeof(__pyx_k_domains), 0, 0, 1, 1},
   {&__pyx_n_s_done, __pyx_k_done, sizeof(__pyx_k_done), 0, 0, 1, 1},
-  {&__pyx_kp_s_done_2, __pyx_k_done_2, sizeof(__pyx_k_done_2), 0, 0, 1, 0},
   {&__pyx_kp_s_done_with, __pyx_k_done_with, sizeof(__pyx_k_done_with), 0, 0, 1, 0},
   {&__pyx_n_s_dotProduct, __pyx_k_dotProduct, sizeof(__pyx_k_dotProduct), 0, 0, 1, 1},
   {&__pyx_n_s_dpBackPointers, __pyx_k_dpBackPointers, sizeof(__pyx_k_dpBackPointers), 0, 0, 1, 1},
@@ -42333,11 +42333,11 @@ static int __Pyx_InitCachedConstants(void) {
   /* "discriminativeTagger.pyx":909
  *         # override options used during training that may be different for prediction
  *         #t.setBinaryFeats(False)
- *         print('done.', file=sys.stderr)             # <<<<<<<<<<<<<<
+ *         print('Ready for input.', file=sys.stderr)             # <<<<<<<<<<<<<<
  *     else:
  *         t = DiscriminativeTagger(cutoff=args.cutoff, defaultY=args.defaultY)
  */
-  __pyx_tuple__121 = PyTuple_Pack(1, __pyx_kp_s_done_2); if (unlikely(!__pyx_tuple__121)) __PYX_ERR(0, 909, __pyx_L1_error)
+  __pyx_tuple__121 = PyTuple_Pack(1, __pyx_kp_s_Ready_for_input); if (unlikely(!__pyx_tuple__121)) __PYX_ERR(0, 909, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__121);
   __Pyx_GIVEREF(__pyx_tuple__121);
 

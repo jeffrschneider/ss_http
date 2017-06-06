@@ -1,14 +1,11 @@
-run ./supersense.sh
+use ss_tagger.py
 
-after "loading model... done."
+note: initialization of a tagger object can take up to a minute
+        lexicons take up 1.34gb of memory per tagger object.
 
-Input sentence. Press CTRL-D twice.
+tagger.pairs(sentence) returns list of token/supersense pairs.
 
-JSON object with token-supersense pairs is outputted.
-
-Repeat as desired.
-
-CTRL-D on an empty line exits program.
+tagger.json(in) converts pairs or sentence to JSON formatted list of pairs.
 
 modifies
 pysupersensetagger

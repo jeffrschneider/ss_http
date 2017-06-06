@@ -906,7 +906,7 @@ def setup(args):
         t = DiscriminativeTagger.loadModel(args.load)
         # override options used during training that may be different for prediction
         #t.setBinaryFeats(False)
-        print('done.', file=sys.stderr)
+        print('Ready for input.', file=sys.stderr)
     else:
         t = DiscriminativeTagger(cutoff=args.cutoff, defaultY=args.defaultY)
         #t.setBinaryFeats(False)

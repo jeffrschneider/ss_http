@@ -1,4 +1,11 @@
-use ss_tagger.py
+Run ss_http.py to initialize. 
+Port is currently 8080. 
+
+send requests as URL/?data=SENTENCE, 
+where SENTENCE is ASCII escaped sentence with or without quotes.
+
+
+using ss_tagger.py
 
 note: initialization of a tagger object can take up to a minute
         lexicons take up 1.34gb of memory per tagger object.

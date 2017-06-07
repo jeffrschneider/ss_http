@@ -48,6 +48,8 @@ class tagger:
                 tag = 'O'
             if 'Ī' == tag:
                 tag = raw_pairs[i-1][1]
+            if '`a' == tag:
+                tag = 'O'
             raw_pairs[i][1] = tag
         return raw_pairs
 

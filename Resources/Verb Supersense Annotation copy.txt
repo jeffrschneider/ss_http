@@ -1,0 +1,150 @@
+From: http://www.cs.cmu.edu/~ark/LexSem/vsst-guidelines.html
+
+Verb Supersense Annotation Guidelines for STREUSLE 2.0
+Using WordNet as a guide, we should develop a tagging scheme for verbs along the lines of the one for nouns. (Verb tag names are lowercased to distinguish them from noun tags.)
+`a (auxiliary)
+might/aux have/aux been/aux Ving
+`j (adjectival)
+the written/adj message, a sinking/adj feeling
+body (grooming, dressing, bodily functions and care)
+exercise = work out, cry (shed tears), wear (clothes), sweat, shiver, faint, burp, ache, tire, sleep, recuperate = convalesce, reproduce (biologically), die = cease to live [though WN puzzlingly has change], injure (physically)
+change (size, temperature change, intensifying, etc.)
+grow (increase in size, age, or value), remove (physically), modify, revert, adjust, pop = burst
+	•	includes verbs derived with -ify, -ize, -en, etc.: humidify, magnetize, strengthen
+cognition (thinking, judging, analyzing, doubting)
+decide, think, rate (assign rating), respect = have respect for, memorize, learn, see = understand
+	•	contrast with perception, communication
+communication (verbal/linguistic or nonverbal gesturing: telling, asking, ordering)
+speak, talk, write = communicate by writing, announce, type (on a keyboard), cry out, describe, argue, contest, petition, stammer, beg, mandate, veto, libel, preach, teach (education), fax, moo (animal noise)
+	•	WN lists music production (a person singing/playing an instrument) as creation
+	•	noises from inanimate objects (‘creak’, etc.) are perception
+	•	contrast with perception, cognition
+competition (fighting, athletic activities)
+compete, fight (with someone), play (sports), referee, duel [supersedes social?; superseded by communication for rhetorical senses of ‘attack’, ‘contend’, etc.; superseded by contact for moments of physical contact: ‘wrestle’, ‘box’, ‘punch’, ‘beat up’]
+consumption (ingesting, using, exploiting)
+eat, picnic, thirst for (drink), digest (food), smoke (cigarette), use, waste [supersedes change and body?]
+	•	we tasted the food (BUT: the food tastes yummy is perception)
+contact (touching, hitting, tying, digging)
+fasten, overlay, slice, rub, pinch, box, punch, shoulder, yank, bump, release, lug, airlift, use/operate (an instrument or machine) [supersedes stative and motion, e.g. move something by vehicle or by carrying it]
+creation (sewing, baking, painting, performing)
+create, bake (a cake), grow (agriculture), invent, write = produce a book, perform (give a performance)
+emotion (feeling)
+fear, anger, hope = wish, trust [difficult to separate from social and communication, e.g. ‘amuse’, ‘encourage’]
+	•	some lists of emotions: https://en.wikipedia.org/wiki/Contrasting_and_categorization_of_emotions
+motion (walking, flying, swimming)
+travel, leap (physically), fly, vibrate, rotate (physically) [some synsets, e.g. for ‘reach’, conflate literal and metaphorical senses under motion (metaphorical should be change)?]
+perception (seeing, hearing, feeling)
+see (visually), witness, feel (by touch), seem, thirst = feel thirsty, ache = feel physical pain, hallucinate, clang, twinkle (candle or bulb), creak (inanimate noise source)
+	•	the food tastes yummy (BUT: we tasted the food is consumption)
+	•	contrast with communication, cognition
+possession (buying, selling, owning)
+receive = acquire, lend, sell, purchase, rob, want/ask=charge (an amount for), have = own, possess (a piece of property)
+
+social (social activities and events: law, politics, economy, education, family, religion, etc.)
+meet (socially), celebrate, divorce, succeed (achieve success, or be successor to), respect = show respect towards, gerrymander, cheat (except in the competitive sense), spoil = mollycoddle
+stative (being, having, spatial relations)
+be, have = feature, stagnate, equal, necessitate, lack, span, contain (physically), underlie [superseded by contact? encircle/surround, cover = serve as cover for]
+	•	what separates these things is…
+	•	X compared to Y
+	•	active subject usually a theme??
+weather (raining, snowing, thawing, thundering)
+rain, thunder, twinkle (star), warm up (climate)
+Differentiation
+perception, communication, cognition
+	•	communication if there is necessarily a transfer of information from one party to another 
+	◦	showing me various options
+	•	perception if the focus is on taking in information by one party (can often substitute “seem” or “feel”) 
+	◦	they seemed more interested
+	◦	it sounded like it’s done every day
+	◦	it will look beautiful
+	•	cognition if about mentally processing information 
+	◦	rate as five stars (no communication necessarily implied)
+	◦	difficult to see what you’re paying for (= understand)
+Precedence relations
+	•	{perception, consumption} > body > change
+	•	motion > social > change
+	•	emotion > change
+	•	motion > {body, possession} (e.g., stand_up, bring)
+	•	contact > {stative, motion}
+	•	{contact, communication} > competition > social
+	•	emotion > cognition
+Groupings
+	•	GENERAL 
+	◦	motion, change, creation
+	◦	contact
+	◦	stative
+	◦	weather
+	•	PERSONS 
+	◦	body, consumption
+	◦	perception
+	◦	cognition 
+	▪	emotion
+	◦	social 
+	▪	possession
+	▪	communication
+	▪	competition
+Specific decisions
+	•	fall_ill, fall_asleep, die, injure, give_birth: body
+	•	fall_in_love: emotion
+12/4
+	•	have_been_to - as in visiting a location: motion
+	•	cleft and existential ‘be’: stative
+	•	give/receive a tattoo: possession; give/take a lesson: social
+12/10
+	•	wait: cognition if emphasis on expectation, stative if emphasis on not acting
+12/12
+	•	be_the_epitome_of or the_epitome_of?
+	•	feel: cognition if having an opinion, emotion if experiencing a feeling, perception if experiencing a physical stimulus
+12/19
+	•	deal_with = come to grips with: emotion; deal_with = interact_with somebody: social
+	•	found something to be adj: cognition
+	•	require/take/let/permit with an inanimate subject (i.e., it took 1 
+	•	hour) stative, but when the subject and object are both people it is 
+	•	social
+	•	pass time: ??
+	•	save/keep/prevent from: stative
+	•	like/love/hate etc. when conveying an opinion: emotion
+	•	get/receive/give~service: social
+	•	bother_with meaning go to the trouble to do something: social
+	•	We need to revisit die and fall ill (body vs. change)
+	•	have_pedicure, have_ hair _done: body 
+	◦	We need to revisit give/receive tattoo, which is currently possession
+	•	any commercial act (i.e., using their services): possession
+	•	We need to revisit MWEs with be
+	•	have_experience: stative
+1/2
+	•	revision of body to take precedence over change (for changes in health, etc.)
+	•	use/operate an instrument/machine: contact
+1/14
+Several changes above, new section contrasting perception/communication/cognition, as well as:
+	•	recommend, itemized (receipt), get_in_touch_with (a manager): communication
+	•	beware of: cognition
+	•	avoid: 
+	◦	(purposefully) avoid restaurant at all costs: cognition
+	◦	something was avoided = it fortunately failed to happen: change
+	•	social: 
+	◦	sabotaging
+	◦	went_above_and_beyond
+	◦	bait_and_switching
+	◦	helped_ me _through difficult times
+	◦	she makes_ you _feel
+	◦	worst service I ever experienced
+	•	arrive/got=made_it/leave/brought_in (= carried): motion
+	•	got_upgraded_to (a corner suite): change
+	•	sports related, including (parts): stative
+1/15
+	•	grab a cab: possession
+	•	hard to find (restaurant): cognition
+	•	do_research about a restaurant: social
+	•	have_issues/problems: cognition
+	•	use (someone’s services): possession
+	•	pay_attention: perception
+1/16
+	•	order a sandwich: communication (though it is part of a larger scenario of dining that might be possession or social)
+Remarks
+When tagging in context, note that (unless it is an MWE) only the meaning of the verb should be characterized. So the verb ‘rising’ in ‘temperatures are rising’ should be tagged as a change verb, NOT as a weather verb.
+Inherently negative verbs like ‘avoid’, ‘remove’, and ‘refuse’ receive a sense depending on the sort of activity that is not performed.
+Issues:
+	•	modals, quasi-modals, count as auxes: be_supposed_to, be_going_to, do not V
+	•	all uses of ‘do’, other weakly collocated light verbs not contributing their own meaning??
+	•	have warning about s.t.: perception?

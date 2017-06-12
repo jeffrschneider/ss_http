@@ -9,6 +9,7 @@ See also: <http://www.cs.cmu.edu/~ark/LexSem/>
 
 
 **ss\_http**
+====================
 
 A python HTTP server for tagging supersenses.
 
@@ -18,7 +19,7 @@ A python HTTP server for tagging supersenses.
 
 
 
--   Supports:
+Supports:
 -   Multiple sentences
 -   Unicode white spaces
 -   Full and half width characters.

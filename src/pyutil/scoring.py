@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 '''
 Utilities for scoring/evaluating data (human annotations or system output).
 

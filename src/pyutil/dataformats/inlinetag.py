@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 #coding=UTF-8
 '''
 Handles SLAM (SLAsh Markup), an inline format for annotating (single or multi-word)

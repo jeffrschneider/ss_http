@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 '''
 Beam class: holds up to N key-value pairs, 
 prioritizing higher values.

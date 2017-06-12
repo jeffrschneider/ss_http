@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 '''
 OrderedSet implementation, from http://stackoverflow.com/questions/1653970/does-python-have-an-ordered-set/1653978#1653978
 

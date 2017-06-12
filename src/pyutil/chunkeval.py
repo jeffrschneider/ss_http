@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python2
 '''
 Several measures for evaluating chunking predictions with respect to a gold standard.
 Pass -h to see usage.

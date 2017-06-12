@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 # coding=UTF-8
 '''
 Handles the 'integrated' file format in the Penn Arabic Treebank. Written with reference to Part 3, v. 3.2.

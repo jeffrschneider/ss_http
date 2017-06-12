@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
+# coding: utf-8
 from subprocess import Popen, PIPE, STDOUT
 import sys
 import json
 import time
 
+from signal import signal, SIGPIPE, SIG_DFL
+
+
 class tagger:
 
     def __init__(self):
+        signal(SIGPIPE, SIG_DFL)
         self.p = Popen(['./predict_sst.sh', 'dummy'], stdout=PIPE, stderr=PIPE,stdin=PIPE, bufsize=1, universal_newlines=True)
         for line in self.p.stderr:
             if "Ready" in line:
@@ -14,7 +19,12 @@ class tagger:
 
     def tag_sentence(self, sentence):
         sentence += '\n' #to trigger readline()
-        self.p.stdin.write(sentence)
+        try:
+            self.p.stdin.write(sentence)
+        except UnicodeDecodeError:
+            return "\tINVALID\t\t\tCHARACTER\t\n"
+        except UnicodeEncodeError:
+            return "\tINVALID\t\t\tCHARACTER\t\n"
         tsv = ""
         for line in self.p.stdout:
             if line == '\n':

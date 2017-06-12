@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python2
 #coding=utf-8
 '''
 Reads an .mwe or .sst file with lemmas and produces a list of (lemmatized) MWE types

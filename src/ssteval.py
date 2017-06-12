@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python2
 #coding=utf-8
 '''
 Measures SST prediction performance, ignoring chunking (except for exact tag accuracy).

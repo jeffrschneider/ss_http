@@ -25,13 +25,13 @@ for ln in fileinput.input(sys.argv[2]):
   sentid = ln.strip()
   print(sentid, entries[sentid], sep='\t')
 " 
-	python2.7 -c "$SCRIPT" cmwe/corpus.mwe train.sentids > cmwe/train.mwe
-	python2.7 -c "$SCRIPT" cmwe/corpus.mwe test.sentids > cmwe/test.mwe
+	python2 -c "$SCRIPT" cmwe/corpus.mwe train.sentids > cmwe/train.mwe
+	python2 -c "$SCRIPT" cmwe/corpus.mwe test.sentids > cmwe/test.mwe
 
 	# convert to tags
 
-	python2.7 src/mwe2tags.py cmwe/train.mwe > cmwe/train.tags
-	python2.7 src/mwe2tags.py cmwe/test.mwe > cmwe/test.tags
+	python2 src/mwe2tags.py cmwe/train.mwe > cmwe/train.tags
+	python2 src/mwe2tags.py cmwe/test.mwe > cmwe/test.tags
 
 	#train the POS tagger:
 	#java -XX:ParallelGCThreads=2 -Xmx8g -cp $ark/ark-tweet-nlp-0.3.2.jar cmu.arktweetnlp.Train $in ewtb_pos.model
@@ -54,15 +54,15 @@ for ln in fileinput.input(sys.argv[2]):
 
 # - learning on training set, predict on test set
 
-python2.7 src/main.py --mwe --YY tagsets/bio2g --defaultY O --train cmwe/train.syspos.tags --test-predict cmwe/test.syspos.tags --iters 3 --debug --save mwe.model --bio NO_SINGLETON_B --clusters --cluster-file mwelex/yelpac-c1000-m25.gz --lex mwelex/{semcor_mwes,wordnet_mwes,said,phrases_dot_net,wikimwe,enwikt}.json /dev/null --includeLossTerm --costAug 100  > testpredictions.syspos.tags
+python2 src/main.py --mwe --YY tagsets/bio2g --defaultY O --train cmwe/train.syspos.tags --test-predict cmwe/test.syspos.tags --iters 3 --debug --save mwe.model --bio NO_SINGLETON_B --clusters --cluster-file mwelex/yelpac-c1000-m25.gz --lex mwelex/{semcor_mwes,wordnet_mwes,said,phrases_dot_net,wikimwe,enwikt}.json /dev/null --includeLossTerm --costAug 100  > testpredictions.syspos.tags
 # the /dev/null was supposed to be ignored, but it does have a small effect
 
 # - convert predictions to .mwe
 
-python2.7 src/tags2mwe.py testpredictions.syspos.tags > testpredictions.syspos.mwe
+python2 src/tags2mwe.py testpredictions.syspos.tags > testpredictions.syspos.mwe
 
 # - evaluate
 
-python2.7 src/tags2mwe.py cmwe/test.tags > cmwe/test.withtags.mwe
+python2 src/tags2mwe.py cmwe/test.tags > cmwe/test.withtags.mwe
 
-python2.7 src/mweval.py --default-strength strong cmwe/test.withtags.mwe testpredictions.syspos.mwe > testpredictions.eval
+python2 src/mweval.py --default-strength strong cmwe/test.withtags.mwe testpredictions.syspos.mwe > testpredictions.eval

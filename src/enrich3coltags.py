@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python2
 '''
 Enriches a file with just words, POSes, and supersense tags (and optionally IDs)
 into the full 8- or 9-column format (which includes lemmas, parent indices, bare labels, etc.).

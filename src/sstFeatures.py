@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 '''
 Feature extraction routines for joint supersense tagging + MWE identification.
 Adds a few new features to the TACL 2014 MWE model (mweFeatures.py), 

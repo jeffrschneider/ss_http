@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python2
 '''
 Demonstrates how to use the OntoNotes Python API (provided in the 
 OntoNotes DB Tool v. 0.999b) to extract word sense, named entity, 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python2
 '''
 Bidirectional mapping/set of alignments between two sequences. 
 The mapping holds token offsets within the sequences.

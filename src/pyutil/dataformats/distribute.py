@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python2
 '''
 Allocates source data into batches. Intended for several scenarios, including 
 partitioning data into train/dev/test splits, and distributing data for annotation 

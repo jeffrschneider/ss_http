@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 '''
 Ported from Michael Heilman's SuperSenseFeatureExtractor.java
 (parts refactored into the 'morph' module).

@@ -25,7 +25,9 @@ class myHandler(BaseHTTPRequestHandler):
         query = unquote(query)
         query = re.sub('\s', ' ', query) #replaces all unicode spaces with single ascii space
         query = unicodedata.normalize('NFKC', query) #converts unicode full width to half width ascii, along with some accent conversions
+        query = re.sub(';', '%3B', query)
         data = parse_qs(query)['data'][0].strip('"').strip("'")
+        query = re.sub('%3B', ';', query)
         print("data sent to tagger: " + data)
         json_tagged_data = t.json(data)
         self.wfile.write(json_tagged_data.encode("utf-8"))

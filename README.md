@@ -17,7 +17,7 @@ A python HTTP server for tagging supersenses.
 
 -   Enables rapid input by keeping lexicons in memory.
 -   Provides convenient python wrapper for shell scripts to ease
-interoperation.
+    interoperation.
 
 \
 
@@ -65,19 +65,19 @@ docker pull brombach/ss\_http
 docker run -p **xx**:8080 brombach/ss\_http
 
 -   The image will expose port 8080 of its container. *-p xx:8080* maps
-the connection to port **xx** of your choosing on the host machine.
+    the connection to port **xx** of your choosing on the host machine.
 -   NOTE: \~1.4gb of data must be loaded into memory before the server
-is initialized. This can take between 30 and 90 seconds.
+    is initialized. This can take between 30 and 90 seconds.
 
 \
 
 Send GET requests with a single key-value pair of data=*sentence*
 
 -   **Example request**: curl
-localhost:**xx**/?data=This%20is%20a%20sample%20sentence.
+    localhost:**xx**/?data=This%20is%20a%20sample%20sentence.
 -   \
 -   To edit the port exposed on the container, change the EXPOSE command
-in Dockerfile and PORT\_NUMBER in ss\_http.py, then rebuild.
+    in Dockerfile and PORT\_NUMBER in ss\_http.py, then rebuild.
 
 \
 
@@ -108,12 +108,12 @@ localhost:**xx**/?data=This%20is%20a%20sample%20sentence.
 **t = tagger**
 
 -   this command will take 30-90 seconds as lexicons are loaded into
-memory
+    memory
 
 **t.json(“*sentence*”)**
 
 -   returns an array of \[token,supersense\] pairs in json compatible
-format.
+    format.
 
 **t.pairs(“*sentence”*)**
 
@@ -124,20 +124,20 @@ t.tag\_sentence(“*sentence”*)
 returns tab seperated columns in the form:
 
 -   num | token | lowercase\_token | POS\_tag |
-multiword\_phrase\_info-supersense | is\_part\_of\_MWP | supersense
+    multiword\_phrase\_info-supersense | is\_part\_of\_MWP | supersense
 
 t.extract\_raw\_pairs(tab\_seperated\_columns)
 
 -   input is output of tag\_sentence
 -   returns pairs made from 2nd (token) and 5th (MWP-supersense) columns
-of each row.
+    of each row.
 
 t.clean\_up\_iob(pairs)
 
 -   input is output of extract\_raw\_pairs(tsc): \[\[tok, MWP-SS\],
-\[tok, MWP-SS\],..\]
+    \[tok, MWP-SS\],..\]
 -   uses multiword-phrase info to attach supersense of beginning of
-phrase to all components.
+    phrase to all components.
 
 \
 
@@ -146,3 +146,4 @@ phrase to all components.
 \
 
 \
+

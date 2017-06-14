@@ -26,11 +26,12 @@ class tagger:
         except UnicodeEncodeError:
             return "\tINVALID\t\t\tCHARACTER\t\n"
         tsv = ""
-        for line in self.p.stdout:
-            if line == '\n':
+        for line in self.p.stdout.buffer:
+            string = line.decode()
+            if string == '\n':
                 continue
-            tsv += line
-            if "$NEXT" in line:
+            tsv += string
+            if "$NEXT" in string:
                 break
         return tsv
 

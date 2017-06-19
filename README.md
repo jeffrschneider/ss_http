@@ -34,17 +34,17 @@ For use of tagger without a server, see **Advanced Use**
 
 
 
-Supersenses tagged
+#Supersense Tags#
 
-Nouns (capitalized): COGNITION, COMMUNICATION, PHENOMENON, PROCESS,
-EVENT, ACT, RELATION, ATTRIBUTE, STATE, ARTIFACT, MOTIVE, FEELING,
-QUANTITY, RELATION, TIME, OBJECT, POSSESSION, SUBSTANCE, OTHER, ANIMAL,
-PERSON, PLANT, BODY, FOOD, GROUP, LOCATION, SHAPE, OBJECT
+The full description of Noun Supersense tags is here:
+https://github.com/brombach/ss_http/blob/master/Resources/Noun%20Supersense%20Guidelines.pdf
+and the document on verbs is here:
+https://github.com/brombach/ss_http/blob/master/Resources/Verb%20Supersense%20Annotation.pdf
 
-
-
-Verbs (lowercase): \`a, \`j, body, change, cognition, communication,
-competition, consumption, contact, creation, emotion, motion,
+The following is a summary of the tags: 
+- Nouns (capitalized): COGNITION, COMMUNICATION, PHENOMENON, PROCESS, EVENT, ACT, RELATION, ATTRIBUTE, STATE, ARTIFACT, MOTIVE, FEELING,
+QUANTITY, RELATION, TIME, OBJECT, POSSESSION, SUBSTANCE, OTHER, ANIMAL, PERSON, PLANT, BODY, FOOD, GROUP, LOCATION, SHAPE, OBJECT
+- Verbs (lowercase): \`a, \`j, body, change, cognition, communication,competition, consumption, contact, creation, emotion, motion,
 perception, possession, social, stative, weather
 
 
